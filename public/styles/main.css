@@ -3,8 +3,24 @@ background: #40E0D0;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.text-center {
+#title {
 	color: white;
-	font-size: 50px;
+	font-size: 60px;
 	font-family: 'Black Han Sans', sans-serif;
+	margin-right: 100px;
+}
+form {
+	font-family: 'Black Han Sans', sans-serif;
+	margin-top: 100px;
+}
+.chore-text-center {
+	color: white;
+	font-family: 'Black Han Sans', sans-serif;
+	font-size: 20px;
+}
+.chorename {
+	font-family: 'Black Han Sans', sans-serif;
+	color: black;
+	font-size: 30px;
+
 }

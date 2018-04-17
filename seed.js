@@ -24,14 +24,14 @@ var todo_list = [
     
 ];
 
-// remove all records that match {} -- which means remove ALL records
+// remove all records that match {} -- which means remove ALL tasks
 db.Todo.remove({}, function(err, todos){
   if(err) {
     console.log('Error occurred in remove', err);
   } else {
     console.log('removed all tasks');
 
-    // create new records based on the array books_list
+    // create new records based on the array tasks_list
     db.Todo.create(todo_list, function(err, todos){
       if (err) { return console.log('err', err); }
       console.log("created", todo_list.length, "list");

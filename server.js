@@ -25,6 +25,16 @@ app.set('view engine', 'ejs');
 
 //DATA 
 
+
+
+//ROUTES 
+
+
+//define a root route: localhost:3000/
+app.get('/', function(req, res) {
+	res.render('index');	
+});
+
 //Get all tasks
 app.get('/api/todo', function (req, res) {
 	db.Todo.find(function(err, todo) {
@@ -36,24 +46,43 @@ app.get('/api/todo', function (req, res) {
 	});
 });
 
-
-
-
-
-
-
-
-
-
-//ROUTES 
-
-//define a root route: localhost:3000/
-app.get('/', function(req, res) {
-	// res.sendFile('views/index.ejs', {root : __dirname});
-	let data = {
-		title: "Sample Title"}
-	res.render('index', data);	
+//Get one task 
+app.get('/api/todo/:id', function (req, res) {
+	//find one task by it's id
+	console.log('task shown', req.params);
+	db.Todo.find(function(err, todo) {
+		res.json(todo[req.params.id-1]);
+	})
 });
+
+//Create new task 
+app.post('/api/todo', function (req, res) {
+	var newTask = new db.Todo({task: req.body.task, description: req.body.description});
+	newTask.save();
+	res.json(newTask);
+});
+
+//Update task 
+app.post('/api/todo/:id', function(req, res) {
+	console.log('task updated', req.params);
+});
+
+
+//Delete task 
+app.delete('/api/todo/:id', function (req, res) {
+	console.log('task delete', req.params);
+	var taskId = req.params.id;
+	db.Todo.findOneAndRemove({_id: taskId}, function(err, todo) {
+		console.log('task is deleted', req.params);
+		res.json(todo);
+	})
+});
+
+
+
+
+
+
 
 
 

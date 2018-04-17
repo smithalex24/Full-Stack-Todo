@@ -62,9 +62,13 @@ app.post('/api/todo', function (req, res) {
 	res.json(newTask);
 });
 
-//Update task 
-app.post('/api/todo/:id', function(req, res) {
-	console.log('task updated', req.params);
+//update task 
+app.post('/api/todo', function (req, res) {
+  // create new book with form data (`req.body`)
+  let newTask = req.body;
+  db.Book.findOneAndUpdate({ $or: [ {task: newTask.title}, {description: newTask.description} ]}, newTask, {upsert: true}, function(err, todos) {
+    res.json(todos) 
+  });
 });
 
 
@@ -77,13 +81,6 @@ app.delete('/api/todo/:id', function (req, res) {
 		res.json(todo);
 	})
 });
-
-
-
-
-
-
-
 
 
 

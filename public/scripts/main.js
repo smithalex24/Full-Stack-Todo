@@ -25,6 +25,8 @@ $('#newTaskForm').on('submit', function(event) {
 	});
 });
 
+
+
 $tasksList.on('click', '.deleteBtn', function() {
 	console.log('clicked delete button to', 'api/todo/'+$(this).attr('data-id'));
 	$.ajax({

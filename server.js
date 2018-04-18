@@ -55,18 +55,12 @@ app.get('/api/todo/:id', function (req, res) {
 	})
 });
 
-//Create new task 
-app.post('/api/todo', function (req, res) {
-	var newTask = new db.Todo({task: req.body.task, description: req.body.description});
-	newTask.save();
-	res.json(newTask);
-});
 
-//update task 
+//create and update task 
 app.post('/api/todo', function (req, res) {
   // create new book with form data (`req.body`)
   let newTask = req.body;
-  db.Book.findOneAndUpdate({ $or: [ {task: newTask.title}, {description: newTask.description} ]}, newTask, {upsert: true}, function(err, todos) {
+  db.Todo.findOneAndUpdate({ $or: [ {task: newTask.task}, {description: newTask.description} ]}, newTask, {upsert: true}, function(err, todos) {
     res.json(todos) 
   });
 });

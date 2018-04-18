@@ -23,6 +23,7 @@ $('#newTaskForm').on('submit', function(event) {
 		success: newTaskSuccess,
 		error: newTaskError
 	});
+	location.reload();
 });
 
 

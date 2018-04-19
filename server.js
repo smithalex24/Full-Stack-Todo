@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3001)
 
 //DATA 
 

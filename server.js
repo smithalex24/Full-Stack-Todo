@@ -2,7 +2,11 @@
 const db = require('./models');
 //Connect to the MongoDB service
 const mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/todo-app');
+	if (process.env.NODE_ENV == "production") {
+  	mongoose.connect(process.env.MLAB_URL)
+	} else {
+  	mongoose.connect("mongodb://localhost/whenpresident");
+	}
 //Requiring todo list to server
 const Todo = require('./models/todo');
 //Require express app 

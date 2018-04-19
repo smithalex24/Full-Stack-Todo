@@ -11,7 +11,7 @@ const express = require('express'),
 //Generate a new express app and call it 'app'
 const app = express();
 
-var port = 3000;
+var port = 3001;
 //Serve static files in public 
 app.use(express.static('public'));
 
@@ -77,10 +77,6 @@ app.delete('/api/todo/:id', function (req, res) {
 	})
 });
 
-
-
-
-
-app.listen(3000, () => {
-    console.log("I am listening");
-});
+ app.listen(app.get('port'), () => {
+    console.log(`✅ PORT: ${app.get('port')} 🌟`)
+  })
